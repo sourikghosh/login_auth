@@ -9,5 +9,5 @@ const pool = new Pool({
     connectionString: isProduction ? process.env.DATABASE_URL : connectionString
 })
 
-export default pool
+export default poo
 

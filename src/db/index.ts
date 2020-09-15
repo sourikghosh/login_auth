@@ -3,13 +3,18 @@ import env from 'dotenv'
 env.config()
 
 const pool = new Pool({
+    user: process.env.PGUSER,
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    port: 5432,
 
 })
 // //for client checkout
 // ; (async () => {
 //     const client = await pool.connect()
 //     try {
-//         const res = await client.query('SELECT * FROM users WHERE id = $1', [1])
+//         const res = await client.query('select * from registration')
 //         console.log(res.rows[0])
 //     }
 //     finally {
@@ -25,7 +30,7 @@ const pool = new Pool({
 //     console.log('user:', rows[0])
 // })().catch(err =>
 //     setImmediate(() => {
-//         throw err
+//         console.log(err)
 //     })
 // )
 export default pool

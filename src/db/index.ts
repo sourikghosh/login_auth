@@ -21,7 +21,7 @@ const pool = new Pool({
 //     .catch(err => console.log(err.stack))
 // //single query recommended
 // ; (async () => {
-//     const { rows } = await pool.query('SELECT * FROM users WHERE id = $1', [1])
+//     const { rows } = await pool.query('SELECT * FROM registration')
 //     console.log('user:', rows[0])
 // })().catch(err =>
 //     setImmediate(() => {

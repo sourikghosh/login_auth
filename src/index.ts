@@ -1,11 +1,10 @@
 import express from 'express'
-import * as dotenv from 'dotenv'
-dotenv.config({ path: __dirname + '/.env' })
-
+import env from 'dotenv'
+env.config()
 const app = express()
-app.get('/', (req, res) => {
-    res.json({ message: "success" })
-})
-const port = process.env.PORT || 4006
+
+let port = "4000"
+if (process.env.PORT)
+    port = process.env.PORT
 
 app.listen(port, () => console.log(`The server is running at ${port}`)) 

@@ -1,15 +1,19 @@
-import { Pool } from 'pg'
+import { Client } from 'pg'
 import env from 'dotenv'
 env.config()
 
-const pool = new Pool({
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    port: 5432,
-
+const client = new Client({
+    "user": process.env.PGUSER,
+    "host": process.env.PGHOST,
+    "database": process.env.PGDATABASE,
+    "password": process.env.PGPASSWORD,
+    "port": 5432,
 })
+
+
+
+
+
 // //for client checkout
 // ; (async () => {
 //     const client = await pool.connect()
@@ -33,5 +37,5 @@ const pool = new Pool({
 //         console.log(err)
 //     })
 // )
-export default pool
+export default client
 

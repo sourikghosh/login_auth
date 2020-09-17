@@ -9,8 +9,13 @@ const isconnected = async () => {
     while (retries) {
 
         try {
-            const client = await pool.connect
-            break;
+            console.log(`trying to connect the db...`)
+            const overload = await pool.connect()
+            console.log(`connected`)
+            const result = await overload.query(`select * from ${process.env.PGTABLE}`)
+            console.table(result.rows)
+
+            return overload;
         }
         catch (err) {
             console.log(err)
@@ -20,8 +25,13 @@ const isconnected = async () => {
         }
     }
 }
+const reqQuery = async () => {
+    const client = await isconnected()
+    // const results = await client.query(`select * from ${process.env.PGTABLE}`)
+    // console.table(results.rows)
+}
 
-
+reqQuery()
 // const { rows } = await client.query(`select * from registration`)
 // app.get('/all', (req, res) => {
 //     res.send({

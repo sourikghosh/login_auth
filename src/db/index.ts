@@ -13,7 +13,6 @@ const pool = new Pool({
 
 
 
-
 // //for client checkout
 // ; (async () => {
 //     const client = await pool.connect()

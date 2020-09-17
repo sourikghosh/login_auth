@@ -1,31 +1,33 @@
 import express from 'express'
-import client from './db/index'
+import pool from './db/index'
 import env from 'dotenv'
 env.config()
 const app = express()
 
+const isconnected = async () => {
+    let retries = 5;
+    while (retries) {
 
-let retries = 5;
-while (retries) {
-
-    try {
-        client.connect()
-        break;
-    }
-    catch (err) {
-        console.log(err)
-        retries -= 1
-        console.log(`retries left:${retries}`)
-        new Promise(res => setTimeout(res, 5000))
+        try {
+            const client = await pool.connect
+            break;
+        }
+        catch (err) {
+            console.log(err)
+            retries -= 1
+            console.log(`retries left:${retries}`)
+            new Promise(res => setTimeout(res, 5000))
+        }
     }
 }
 
-const { rows } = await client.query(`select * from registration`)
-app.get('/all', (req, res) => {
-    res.send({
-        rows
-    })
-})
+
+// const { rows } = await client.query(`select * from registration`)
+// app.get('/all', (req, res) => {
+//     res.send({
+//         rows
+//     })
+// })
 
 
 

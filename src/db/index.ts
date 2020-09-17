@@ -1,13 +1,13 @@
-import { Client } from 'pg'
+import { Pool } from 'pg'
 import env from 'dotenv'
 env.config()
 
-const client = new Client({
+const pool = new Pool({
     "user": process.env.PGUSER,
     "host": process.env.PGHOST,
     "database": process.env.PGDATABASE,
     "password": process.env.PGPASSWORD,
-    "port": 5432,
+    "port": 5432
 })
 
 
@@ -37,5 +37,5 @@ const client = new Client({
 //         console.log(err)
 //     })
 // )
-export default client
+export default pool
 

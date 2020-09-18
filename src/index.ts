@@ -4,7 +4,7 @@ import env from 'dotenv'
 env.config()
 const app = express()
 
-const isconnected = async () => {
+const isConnected = async () => {
     let retries = 5;
     while (retries) {
 
@@ -12,9 +12,6 @@ const isconnected = async () => {
             console.log(`trying to connect the db...`)
             const overload = await pool.connect()
             console.log(`connected`)
-            const result = await overload.query(`select * from ${process.env.PGTABLE}`)
-            console.table(result.rows)
-
             return overload;
         }
         catch (err) {
@@ -25,8 +22,9 @@ const isconnected = async () => {
         }
     }
 }
+
 const reqQuery = async () => {
-    const client = await isconnected()
+    const client = await isConnected()
     // const results = await client.query(`select * from ${process.env.PGTABLE}`)
     // console.table(results.rows)
 }

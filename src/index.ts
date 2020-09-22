@@ -1,27 +1,12 @@
 import express from 'express'
-import pool from './db/index'
+import { isConnected } from './db'
+import route from './api/routes'
 import env from 'dotenv'
 env.config()
 const app = express()
 
-const isConnected = async () => {
-    let retries = 5;
-    while (retries) {
+app.use(route)
 
-        try {
-            console.log(`trying to connect the db...`)
-            const overload = await pool.connect()
-            console.log(`connected`)
-            return overload;
-        }
-        catch (err) {
-            console.log(err)
-            retries -= 1
-            console.log(`retries left:${retries}`)
-            new Promise(res => setTimeout(res, 5000))
-        }
-    }
-}
 
 const reqQuery = async () => {
     const client = await isConnected()
@@ -29,7 +14,7 @@ const reqQuery = async () => {
     // console.table(results.rows)
 }
 
-reqQuery()
+
 // const { rows } = await client.query(`select * from registration`)
 // app.get('/all', (req, res) => {
 //     res.send({

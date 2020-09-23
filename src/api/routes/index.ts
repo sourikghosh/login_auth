@@ -1,10 +1,10 @@
 import express from 'express'
 import { signupValidationResult, signupValidation } from '../../core/auth'
-const route = express.Router()
+const routes = express.Router()
 
 
 export default
-    route.get('/', (req, res) => {
+    routes.get('/', (req, res) => {
         res.json({
             "message": "👦🏽"
         })

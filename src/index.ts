@@ -1,11 +1,11 @@
 import express from 'express'
 import { isConnected } from './db'
-import route from './api/routes'
+import routes from './api/routes'
 import env from 'dotenv'
 env.config()
 const app = express()
 
-app.use(route)
+app.use(routes)
 
 
 const reqQuery = async () => {

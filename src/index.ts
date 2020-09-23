@@ -3,10 +3,10 @@ import { isConnected } from './db'
 import routes from './api/routes'
 import env from 'dotenv'
 env.config()
+
 const app = express()
-
+app.use(express.json())
 app.use(routes)
-
 
 const reqQuery = async () => {
     const client = await isConnected()

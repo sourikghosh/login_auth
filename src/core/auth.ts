@@ -1,13 +1,10 @@
 import { Request, Response, NextFunction } from 'express'
 import { body, validationResult } from 'express-validator'
 
-
-
-
 export const signupValidationResult = (req: Request, res: Response, next: NextFunction) => {
     const result = validationResult(req);
     const hasErrors = !result.isEmpty();
-    hasErrors ? console.log(result.mapped()) : res.json({ "message": "👌🤴🏽" })
+    hasErrors ? res.send(result.mapped()) : res.json({ "message": "👌🤴🏽" })
 }
 
 export const signupValidation = [

@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { body, validationResult } from 'express-validator'
+import { getByEmail } from '../db/getByEmail'
 
 export const signupValidationResult = (req: Request, res: Response, next: NextFunction) => {
     const result = validationResult(req);
@@ -14,7 +15,11 @@ export const signupValidation = [
         .bail()
         .isEmail()
         .bail()
-        .normalizeEmail(),
+        .normalizeEmail()
+        .custom(value => {
+            if (getByEmail(value))
+                throw new Error('Email already been used : Try login');
+        }),
     body("username", 'should be a valid username')
         .trim()
         .notEmpty()
@@ -22,21 +27,21 @@ export const signupValidation = [
         .isString()
         .bail()
         .isLength({ min: 8, max: 100 }),
-    body("password1", 'should be a valid password')
+    body("password", 'should be a valid password')
         .trim()
         .notEmpty()
         .bail()
         .isString()
         .bail()
         .isLength({ min: 12, max: 100 }),
-    body("password2", 'should be a valid password')
+    body("confirmPassword", 'should be a valid confirm password')
         .trim()
         .notEmpty()
         .bail()
         .isString()
         .bail()
         .custom((value: String, { req }) => {
-            if (value !== req.body.password1) {
+            if (value !== req.body.password) {
                 throw new Error('Password confirmation does not match password');
             }
             return true;

@@ -1,11 +1,9 @@
-import express from 'express'
+import { Router } from 'express'
+import { createUser } from '../../core/createUser'
 import { signupValidationResult, signupValidation } from '../../core/auth'
-const routes = express.Router()
+const routes = Router()
+
+routes.post('/signup', signupValidation, signupValidationResult)
 
 
-export default
-    routes.get('/', (req, res) => {
-        res.json({
-            "message": "👦🏽"
-        })
-    }).post('/signup', signupValidation, signupValidationResult)
+export default routes

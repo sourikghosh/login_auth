@@ -1,4 +1,11 @@
 import { pool } from './config'
 export const getByEmail = async (value: String) => {
-    return await pool.query(`${value} IN (SELECT ${process.env.PGTABLE_COLUMN1} FROM ${process.env.PGTABLE})`)
+    try {
+        const { rows } = await pool.query(`select exists(select ${process.env.PGTABLE_COLUMN1} from ${process.env.PGTABLE} where ${process.env.PGTABLE_COLUMN1} = $1 )`, [value])
+        return rows[0].exists
+    }
+    catch (err) {
+        console.log(err.stack)
+    }
+
 }

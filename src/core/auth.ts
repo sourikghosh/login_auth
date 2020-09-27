@@ -6,10 +6,9 @@ import bcrypt from 'bcrypt'
 export const signupValidationResult = (req: Request, res: Response, next: NextFunction) => {
     const result = validationResult(req);
     const hasErrors = !result.isEmpty();
-    hasErrors ? res.send(result.mapped()) : bcrypt.hash(req.body.password, 12, function (err, hash) {
-        // Store hash in your password DB.
-    });
-    //res.json({ "message": "👌🤴🏽" })
+    hasErrors ? res.send(result.mapped()) : res.json({
+        "message": "✅👑"
+    })
 }
 
 export const signupValidation = [
@@ -20,9 +19,9 @@ export const signupValidation = [
         .isEmail()
         .bail()
         .normalizeEmail()
-        .custom(value => {
-            if (getByEmail(value))
-                throw new Error('Email already been used : Try login');
+        .custom(async value => {
+            if (await getByEmail(value))
+                return Promise.reject('E-mail already in use')
         }),
     body("username", 'should be a valid username')
         .trim()

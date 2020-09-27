@@ -3,7 +3,7 @@ import { createUser } from '../../core/createUser'
 import { signupValidationResult, signupValidation } from '../../core/auth'
 const routes = Router()
 
-routes.post('/signup', signupValidation, signupValidationResult)
+routes.post('/signup', signupValidation, signupValidationResult, createUser)
 
 
 export default routes

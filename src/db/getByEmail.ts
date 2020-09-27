@@ -7,5 +7,4 @@ export const getByEmail = async (value: String) => {
     catch (err) {
         console.log(err.stack)
     }
-
 }

@@ -1,9 +1,10 @@
 import { Router } from 'express'
-import { createUser } from '../../core/createUser'
+import { signUp } from '../../core/siginup'
 import { signupValidationResult, signupValidation } from '../../core/auth'
+import { sign } from 'crypto'
 const routes = Router()
 
-routes.post('/signup', signupValidation, signupValidationResult, createUser)
+routes.post('/signup', signupValidation, signupValidationResult, signUp)
 
 
 export default routes

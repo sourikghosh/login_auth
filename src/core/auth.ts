@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 import { body, validationResult } from 'express-validator'
-import { getByUsername, getByEmail } from '../db/findOne'
+import { checkUsername, checkEmail } from '../db/findOne'
 
-export const signupValidationResult = (req: Request, res: Response, next: NextFunction) => {
+export const ValidationResult = (req: Request, res: Response, next: NextFunction) => {
     const result = validationResult(req);
     const hasErrors = !result.isEmpty();
     hasErrors ? res.send(result.mapped()) : next()
@@ -17,7 +17,7 @@ export const signupValidation = [
         .bail()
         .normalizeEmail()
         .custom(async value => {
-            if (await getByEmail(value))
+            if (await checkEmail(value))
                 return Promise.reject('E-mail already in use')
         }),
     body("username", 'should be a valid username')
@@ -28,7 +28,7 @@ export const signupValidation = [
         .bail()
         .isLength({ min: 8, max: 100 })
         .custom(async value => {
-            if (await getByUsername(value))
+            if (await checkUsername(value))
                 return Promise.reject('Username already taken')
         }),
     body("password", 'should be a valid password')
@@ -44,10 +44,26 @@ export const signupValidation = [
         .bail()
         .isString()
         .bail()
-        .custom((value: String, { req }) => {
+        .custom((value: string, { req }) => {
             if (value !== req.body.password) {
                 throw new Error('Password confirmation does not match password');
             }
             return true;
         })
+]
+
+export const loginValidation = [
+    body("email", 'should be a valid email')
+        .trim()
+        .notEmpty()
+        .bail()
+        .isEmail()
+        .normalizeEmail(),
+    body("password", 'should be a valid password')
+        .trim()
+        .notEmpty()
+        .bail()
+        .isString()
+        .bail()
+        .isLength({ min: 12, max: 100 })
 ]

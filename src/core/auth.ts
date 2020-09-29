@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { body, validationResult } from 'express-validator'
 import { getByEmail } from '../db/getByEmail'
+import { getByUsername } from '../db/getByUsername'
 
 export const signupValidationResult = (req: Request, res: Response, next: NextFunction) => {
     const result = validationResult(req);
@@ -26,7 +27,11 @@ export const signupValidation = [
         .bail()
         .isString()
         .bail()
-        .isLength({ min: 8, max: 100 }),
+        .isLength({ min: 8, max: 100 })
+        .custom(async value => {
+            if (await getByUsername(value))
+                return Promise.reject('Username already taken')
+        }),
     body("password", 'should be a valid password')
         .trim()
         .notEmpty()

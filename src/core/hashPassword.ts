@@ -12,6 +12,6 @@ export const compareHash = async (password: string, hashPassword: string) => {
         return await compare(password, hashPassword)
     }
     catch (err) {
-
+        console.log(err)
     }
 }

@@ -1,6 +1,3 @@
 #login_auth
 
-endpoints : /signup
-            /login
-            /user:{user_id}
-            /
+endpoints : /signup,   /login

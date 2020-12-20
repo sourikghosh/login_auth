@@ -7,7 +7,7 @@
     "prebuild": "rm -rf ./dist",
     "build": "tsc",
     "dev": "nodemon ./src/index.ts",
-    "start": "nodemon node ./src/index.js"
+    "start": "node ./src/index.js"
   },
   "author": "Sourik ghosh",
   "license": "ISC",

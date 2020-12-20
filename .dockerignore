@@ -1,0 +1,5 @@
+node_modules
+.env
+postgresql.sql
+tsconfig.json
+README.md

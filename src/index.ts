@@ -5,9 +5,6 @@ const app = express()
 app.use(express.json())
 app.use(routes)
 
+const PORT = process.env.PORT || "4000"
 
-let port = "4000"
-if (process.env.PORT)
-    port = process.env.PORT
-
-app.listen(port, () => console.log(`The server is running at ${port}`)) 
+app.listen(PORT, () => console.log(`The server is running at ${PORT}`)) 

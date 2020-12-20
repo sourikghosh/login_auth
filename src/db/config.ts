@@ -10,6 +10,8 @@ export const pool = new Pool({
     "port": 5432
 })
 
+//isConnected function 
+/*
 export const isConnected = async () => {
     let retries = 5;
     while (retries) {
@@ -28,3 +30,4 @@ export const isConnected = async () => {
         }
     }
 }
+*/

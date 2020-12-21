@@ -5,6 +5,8 @@ import { login } from '../../core/login'
 const routes = Router()
 
 routes.post('/signup', signupValidation, ValidationResult, signUp)
+
 routes.post('/login', loginValidation, ValidationResult, login)
+routes.get('/login', async (res, req) => { })
 
 export default routes

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { body, validationResult } from 'express-validator'
-import { checkUsername, checkEmail } from '../db/findOne'
+import { checkUsername, checkEmail } from '../../db/findOne'
 
 export const ValidationResult = (req: Request, res: Response, next: NextFunction) => {
     const result = validationResult(req);

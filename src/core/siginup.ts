@@ -7,7 +7,7 @@ export const signUp = async (req: Request, res: Response) => {
         const hpassword = await hashPassword(password)
         const queryArr = [email, username, hpassword]
         await addUser(queryArr)
-        res.send("✅👨‍🦱 added")
+        res.redirect('/login')
     }
     catch (err) {
         res.send(err)

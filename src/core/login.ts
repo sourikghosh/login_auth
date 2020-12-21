@@ -12,7 +12,7 @@ export const login = async (req: Request, res: Response) => {
             if (!(await compareHash(password, user?.[0].password)))
                 return Promise.reject('password donot match')
             else {
-                res.send("✅👨‍🦱 logged in")
+                res.redirect('/dashboard')
             }
         }
     }

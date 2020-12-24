@@ -78,13 +78,13 @@ export const signRefreshToken = async (user: string) => {
         })
     })
 }
-export const verifyRefreshToken = async (refreshToken: string) => {
+export const verifyRefreshToken = async (refreshToken: string): Promise<string> => {
     return new Promise((resolve, reject) => {
         verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!, (err, decode) => {
             if (err) return reject(new createError.Unauthorized())
             const payload: Payload = decode!
-            const user = payload.aud
-            client.GET(user!, (err, result) => {
+            const user: string = payload.aud!
+            client.GET(user, (err, result) => {
                 if (err) {
                     console.log(err.message)
                     reject(new createError.InternalServerError())

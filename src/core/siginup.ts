@@ -1,15 +1,18 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { addUser } from '../db/addUser'
+import { signAccessToken, signRefreshToken } from '../core/jwtAuth'
 import { hashPassword } from './hashPassword'
-export const signUp = async (req: Request, res: Response) => {
+export const signUp = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { email, username, password } = req.body
         const hpassword = await hashPassword(password)
         const queryArr = [email, username, hpassword]
         await addUser(queryArr)
-        res.redirect('/login')
+        const accessToken = await signAccessToken(username)
+        const refreshToken = await signRefreshToken(username)
+        res.send({ accessToken, refreshToken })
     }
     catch (err) {
-        res.send(err)
+        next(err)
     }
 }

@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { body, validationResult } from 'express-validator'
 import { checkUsername, checkEmail } from '../../db/findOne'
+import createError from 'http-errors'
 
 export const ValidationResult = (req: Request, res: Response, next: NextFunction) => {
     const result = validationResult(req);
@@ -18,7 +19,7 @@ export const signupValidation = [
         .normalizeEmail()
         .custom(async value => {
             if (await checkEmail(value))
-                return Promise.reject('E-mail already in use')
+                throw new createError.Conflict(`${value} is already been registered`)
         }),
     body("username", 'should be a valid username')
         .trim()
@@ -29,7 +30,7 @@ export const signupValidation = [
         .isLength({ min: 8, max: 100 })
         .custom(async value => {
             if (await checkUsername(value))
-                return Promise.reject('Username already taken')
+                throw new createError.Conflict(`${value} is already been registered`)
         }),
     body("password", 'should be a valid password')
         .trim()

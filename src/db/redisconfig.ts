@@ -20,8 +20,4 @@ client.on('end', () => {
     console.log('Client disconnected from redis')
 })
 
-process.on('SIGINT', () => {
-    client.quit()
-})
-
 export default client

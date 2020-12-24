@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { getByEmail } from '../db/findOne'
 import { compareHash } from './hashPassword'
 import createError from 'http-errors'
-import { signAccessToken, signRefreshToken } from '../core/jwtAuth'
+import { signAccessToken, signRefreshToken } from './jwtAuth'
 export const login = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { email, password } = req.body

@@ -37,7 +37,6 @@ export const signAccessToken = async (user: string) => {
     })
 }
 export const verifyAccessToken = async (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.session)
     // if (!req.headers['authorization']) return next(new createError.Unauthorized())
     // const authHeader = req.headers['authorization']
     // const token = authHeader.split(' ')[1]
@@ -50,6 +49,7 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
     //     console.log(payload)
 
     //     req.user = payload
+    console.log(req.session.token)
     next()
     // })
 }

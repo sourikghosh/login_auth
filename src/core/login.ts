@@ -12,10 +12,8 @@ declare global {
 }
 export const login = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        //console.log(req.body)
         const { email, password } = req.body
         const user = await getByEmail(email)
-        console.log(user)
         if (user?.length === 0)
             throw new createError.NotFound('User not registered')
         else {

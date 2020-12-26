@@ -10,8 +10,8 @@ export const signUp = async (req: Request, res: Response, next: NextFunction) =>
         await addUser(queryArr)
         const accessToken = await signAccessToken(username)
         const refreshToken = await signRefreshToken(username)
-        res.cookie("token", { accessToken })
-        //res.send({ accessToken, refreshToken })
+        req.session.token = accessToken
+        res.redirect('/dashboard')
     }
     catch (err) {
         next(err)

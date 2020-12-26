@@ -37,19 +37,21 @@ export const signAccessToken = async (user: string) => {
     })
 }
 export const verifyAccessToken = async (req: Request, res: Response, next: NextFunction) => {
-    if (!req.headers['authorization']) return next(new createError.Unauthorized())
-    const authHeader = req.headers['authorization']
-    const token = authHeader.split(' ')[1]
-    verify(token, process.env.ACCESS_TOKEN_SECRET!, (err, payload) => {
-        if (err) {
-            const message =
-                err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
-            return next(new createError.Unauthorized(message))
-        }
-        console.log(payload)
-        req.user = payload
-        next()
-    })
+    console.log(req.session)
+    // if (!req.headers['authorization']) return next(new createError.Unauthorized())
+    // const authHeader = req.headers['authorization']
+    // const token = authHeader.split(' ')[1]
+    // verify(token, process.env.ACCESS_TOKEN_SECRET!, (err, payload) => {
+    //     if (err) {
+    //         const message =
+    //             err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
+    //         return next(new createError.Unauthorized(message))
+    //     }
+    //     console.log(payload)
+
+    //     req.user = payload
+    next()
+    // })
 }
 
 export const signRefreshToken = async (user: string) => {

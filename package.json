@@ -19,7 +19,6 @@
     "http-errors": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.1",
-    "pg-format": "^1.0.4",
     "redis": "^3.0.2"
   },
   "devDependencies": {

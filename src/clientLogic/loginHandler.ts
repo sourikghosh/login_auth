@@ -6,6 +6,12 @@ export const loginHandler = async () => {
     //axios.post('api/login')
     //if success : render login.ejs
     //else render error.ejs
+    try {
+        const resp = await axios.post('',)
+    }
+    catch (err) {
+
+    }
 }
 
 //my doubt is that how to add this handler to by login/signup BUTTON ??

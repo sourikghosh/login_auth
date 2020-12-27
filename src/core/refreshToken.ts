@@ -4,13 +4,18 @@ import { verifyRefreshToken, signRefreshToken, signAccessToken } from './jwtAuth
 
 export const refreshToken = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { refreshToken } = req.body
+        const refreshToken = req.cookies.jid
         if (!refreshToken) throw new createError.BadRequest()
         const user = await verifyRefreshToken(refreshToken)
 
         const accessToken = await signAccessToken(user)
         const refToken = await signRefreshToken(user)
-        res.send({ accessToken: accessToken, refreshToken: refToken })
+        res.cookie("jid", refToken, {
+            httpOnly: true,
+            path: "/api/refreshToken"
+        })
+        res.send({ accessToken: accessToken })
+
     } catch (error) {
         next(error)
     }

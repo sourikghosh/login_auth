@@ -1,13 +1,15 @@
 import express, { Request, Response, NextFunction } from 'express'
 import path from 'path'
 import createError, { HttpError } from 'http-errors'
+import cookieParser from 'cookie-parser'
 import routes from '../src/api/routes'
 
 const app = express()
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));

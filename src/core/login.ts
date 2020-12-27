@@ -15,8 +15,12 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
             else {
                 const accessToken = await signAccessToken(user?.[0].username)
                 const refreshToken = await signRefreshToken(user?.[0].username)
+                res.cookie("jid", refreshToken, {
+                    httpOnly: true,
+                    //path: "/api/refreshToken"
+                })
+                res.send({ accessToken })
 
-                res.send({ accessToken, refreshToken })
             }
         }
     }

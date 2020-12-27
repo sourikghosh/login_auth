@@ -10,7 +10,12 @@ export const signUp = async (req: Request, res: Response, next: NextFunction) =>
         await addUser(queryArr)
         const accessToken = await signAccessToken(username)
         const refreshToken = await signRefreshToken(username)
-        res.send({ accessToken, refreshToken })
+        res.cookie("jid", refreshToken, {
+            httpOnly: true,
+            path: "/api/refreshToken"
+        })
+        res.send({ accessToken })
+
     }
     catch (err) {
         next(err)

@@ -5,7 +5,7 @@ import client from '../db/redisconfig'
 
 export const logout = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { refreshToken } = req.body
+        const refreshToken = req.cookies.jid
         if (!refreshToken) throw new createError.BadRequest()
         const user = await verifyRefreshToken(refreshToken)
         client.DEL(user, (err, val) => {
@@ -14,6 +14,7 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
                 throw new createError.InternalServerError()
             }
             console.log(val)
+            res.clearCookie("jid")
             res.sendStatus(204)
         })
     } catch (error) {

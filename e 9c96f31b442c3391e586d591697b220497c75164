@@ -1,0 +1,113 @@
+[33mcommit 63c8ce4cb574aa731053947081b54d20eb8dd27d[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Sun Dec 27 15:33:48 2020 +0530
+
+    client routes seperated
+
+[33mcommit 1b54b05d27f0ce11199fb50a0b5bc46acab160c9[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Sun Dec 27 15:28:37 2020 +0530
+
+    modified dashboard
+
+[33mcommit 9c96f31b442c3391e586d591697b220497c75164[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 16:08:28 2020 +0530
+
+    redis modified
+
+[33mcommit 56a797a68abe2a013887546f1a518847bc85213a[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 16:08:04 2020 +0530
+
+    routes endpoint modified
+
+[33mcommit b71810e4020f61c677028de6e3f3c3059528bc86[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 16:07:46 2020 +0530
+
+    modified
+
+[33mcommit d0217ebca48ce4d48383ae406071c31e4fc140ed[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 16:07:30 2020 +0530
+
+    css class added
+
+[33mcommit 4910a94fefdbc643ad0cade5e6bb21261ab8e796[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 16:07:20 2020 +0530
+
+    new error page added
+
+[33mcommit ca67d9df0c73b32ff116a7dfbfd5b915c8baae6a[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 14:37:48 2020 +0530
+
+    updated
+
+[33mcommit b11d011eb2b2b00245bb981efc44615d75504a51[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 14:37:35 2020 +0530
+
+    modifed the jwt Auth
+
+[33mcommit cf8927dbb598234b53cb1de3d4d4ea6724165e74[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 14:37:14 2020 +0530
+
+    new routes added
+
+[33mcommit 640dfec5307ceb93ab3059777cb684f7051c53da[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 14:37:03 2020 +0530
+
+    logout logic added
+
+[33mcommit 93ca154f53e9a939ea7971174c42e7dbfa1b57d0[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 14:36:42 2020 +0530
+
+    new middleware refrehToken added
+
+[33mcommit a4013966d1debb9c420c1ec627773d03521bd07c[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 13:46:39 2020 +0530
+
+    modified login with jwt auth
+
+[33mcommit 07a2f76e01546ec2c7842bd2c6138ad7c77520d3[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 13:46:24 2020 +0530
+
+    jwt auth added
+
+[33mcommit 15a6fb969bebc7a9f96e8b1f9f9f3fd85ac634ab[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 13:46:10 2020 +0530
+
+    new routes added
+
+[33mcommit 3ebdced037e1c7be6479b774dfe68a2d87261e28[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 13:45:52 2020 +0530
+
+    middleware jwt auth added
+
+[33mcommit b64e630fc9c9d80b0821a14592999c27243c4730[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 13:45:30 2020 +0530
+
+    updated
+
+[33mcommit a694c98ccdb3d22456a7c5aa3c61d2db9d33c320[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Thu Dec 24 13:32:15 2020 +0530
+
+    new dependencies added
+
+[33mcommit 61953fecb8ea8a010e008fe403fa45bde30e2333[m
+Author: Sourik Ghosh <sourikghosh31@gmail.com>
+Date:   Mon Dec 21 16:34:23 2020 +0530
+
+    modified

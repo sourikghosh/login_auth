@@ -12,7 +12,7 @@ export const signUp = async (req: Request, res: Response, next: NextFunction) =>
         const refreshToken = await signRefreshToken(username)
         res.cookie("jid", refreshToken, {
             httpOnly: true,
-            path: "/api/refreshToken"
+            path: "/api/ref/"
         })
         res.send({ accessToken })
 

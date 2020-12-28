@@ -46,7 +46,6 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
                 err.name === 'JsonWebTokenError' ? 'Unauthorized' : err.message
             return next(new createError.Unauthorized(message))
         }
-        console.log(payload)
         req.user = payload
         next()
     })

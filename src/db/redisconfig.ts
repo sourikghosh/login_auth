@@ -1,7 +1,9 @@
 import redis from 'redis'
 
 const client = redis.createClient({
-    url: process.env.REDIS_URL
+    host: process.env.R_HOST,
+    port: +process.env.R_PORT!,
+    password: process.env.R_PASSWORD
 })
 
 client.on('connect', () => {

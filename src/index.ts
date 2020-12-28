@@ -27,4 +27,4 @@ app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
 
 const PORT = process.env.PORT || "5001"
 
-app.listen(PORT, () => console.log(`The server is running at ${PORT}`)) 
+app.listen(PORT, () => console.log(`🚀 Server is running at ${PORT}`)) 

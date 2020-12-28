@@ -7,7 +7,6 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
         const refreshToken = req.cookies.jid
         if (!refreshToken) throw new createError.BadRequest()
         const user = await verifyRefreshToken(refreshToken)
-
         const accessToken = await signAccessToken(user)
         const refToken = await signRefreshToken(user)
         res.cookie("jid", refToken, {

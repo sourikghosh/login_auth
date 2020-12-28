@@ -9,7 +9,7 @@ const routes = Router()
 
 routes.post('/api/signup', signupValidation, ValidationResult, signUp)
 routes.post('/api/login', loginValidation, ValidationResult, login)
-routes.post('/api/refreshToken', refreshToken)
-routes.delete('/api/logout', logout)
+routes.post('/api/ref/refreshToken', refreshToken)
+routes.delete('/api/ref/logout', logout)
 
 export default routes

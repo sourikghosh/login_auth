@@ -2,12 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "login authentication backend",
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "prebuild": "rm -rf ./dist",
     "build": "tsc",
     "dev": "nodemon -r dotenv/config ./src/index.ts",
-    "start": "node ./dist/index.js"
+    "start": "node ./src/index.js"
   },
   "author": "Sourik ghosh",
   "license": "ISC",

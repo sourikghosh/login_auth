@@ -17,7 +17,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
                 const refreshToken = await signRefreshToken(user?.[0].username)
                 res.cookie("jid", refreshToken, {
                     httpOnly: true,
-                    //path: "/api/refreshToken"
+                    path: "/api/ref/"
                 })
                 res.send({ accessToken })
 

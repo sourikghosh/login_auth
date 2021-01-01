@@ -19,7 +19,7 @@ export const checkUsername = async (value: string) => {
 }
 export const getByEmail = async (value: string) => {
     try {
-        const { rows } = await pool.query(`select * from ${process.env.PGTABLE} where ${process.env.PGTABLE_COLUMN1} = $1`, [value])
+        const { rows } = await pool.query(`select ${process.env.PGTABLE_COLUMN2},${process.env.PGTABLE_COLUMN3} from ${process.env.PGTABLE} where ${process.env.PGTABLE_COLUMN1} = $1`, [value])
         return rows
     }
     catch (err) {

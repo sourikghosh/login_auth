@@ -10,6 +10,7 @@ export const signUp = async (req: Request, res: Response, next: NextFunction) =>
         await addUser(queryArr)
         const accessToken = await signAccessToken(username)
         const refreshToken = await signRefreshToken(username)
+        res.status(201)
         res.cookie("jid", refreshToken, {
             httpOnly: true,
             path: "/api/ref/"

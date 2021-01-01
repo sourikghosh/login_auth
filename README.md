@@ -1,3 +1,3 @@
 # Login Authorization
 
-endpoints : /signup,   /login
+endpoints : /api/signup,   /api/login

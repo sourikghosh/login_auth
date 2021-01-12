@@ -10,6 +10,6 @@ pool.on('connect', () => {
     console.log('Client connected to postgres...')
 })
 
-pool.on('error', (err, pool) => {
-    console.log(err)
+pool.on('error', (err) => {
+    console.log(err.stack)
 })

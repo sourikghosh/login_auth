@@ -5,3 +5,11 @@ const connectionString = process.env.DATABASE_URL || 'postgresql://sourik:neverd
 export const pool = new Pool({
     connectionString
 })
+
+pool.on('connect', () => {
+    console.log('Client connected to postgres...')
+})
+
+pool.on('error', (err, pool) => {
+    console.log(err)
+})
